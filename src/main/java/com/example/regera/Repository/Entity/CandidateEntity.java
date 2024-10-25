@@ -24,13 +24,13 @@ public class CandidateEntity {
     @OneToOne(mappedBy = "candidate")
     private AccountEntity account;
 
-    @OneToMany(mappedBy = "candidate", fetch =  FetchType.LAZY)
+    @OneToMany(mappedBy = "candidate", fetch =  FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     private List<NotificationEntity> notifications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "candidate", fetch =  FetchType.LAZY)
+    @OneToMany(mappedBy = "candidate", fetch =  FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     private List<ReviewEntity> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "candidate", fetch =  FetchType.LAZY)
+    @OneToMany(mappedBy = "candidate", fetch =  FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     private List<CvEntity> cvs = new ArrayList<>();
 
     public AccountEntity getAccount() {

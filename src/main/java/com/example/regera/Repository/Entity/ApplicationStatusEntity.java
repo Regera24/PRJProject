@@ -15,7 +15,7 @@ public class ApplicationStatusEntity {
     @Column(name="value")
     private String value;
 
-    @OneToMany(mappedBy="applicationStatus", fetch = FetchType.LAZY)
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE },mappedBy="applicationStatus", fetch = FetchType.LAZY)
     private List<applyJobEntity> applyJobEntityList = new ArrayList<>();
 
     public Integer getId() {

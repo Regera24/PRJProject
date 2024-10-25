@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ToApplyJobDTO {
+public class ApplyJobConverter {
     @Autowired
     private ModelMapper modelMapper;
 
     public ApplyJobDTO toApplyJobDTO(applyJobEntity applyJob) {
         ApplyJobDTO applyJobDTO = modelMapper.map(applyJob, ApplyJobDTO.class);
+        applyJobDTO.setCvId(applyJob.getCv().getId());
+        applyJobDTO.setJobId(applyJob.getJob().getId());
         applyJobDTO.setStatus(modelMapper.map(applyJob.getApplicationStatus(), ApplicationStatusDTO.class));
         return applyJobDTO;
     }

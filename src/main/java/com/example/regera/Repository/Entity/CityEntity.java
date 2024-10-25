@@ -15,7 +15,7 @@ public class CityEntity {
     @Column(name="value")
     private String value;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name="includeCity",
                 joinColumns = @JoinColumn(name="idCity"),
                 inverseJoinColumns = @JoinColumn(name="idJob"))

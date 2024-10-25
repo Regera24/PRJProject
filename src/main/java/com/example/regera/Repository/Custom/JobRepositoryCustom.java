@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface JobRepositoryCustom {
     public List<JobEntity> getJobByRequest(JobSearchRequest jobSearchRequest);
+    public List<JobEntity> getJobByCandidateId(Integer candidateId);
 }

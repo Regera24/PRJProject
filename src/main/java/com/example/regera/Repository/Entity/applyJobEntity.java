@@ -11,18 +11,18 @@ public class applyJobEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name="applicationStatusId")
     private ApplicationStatusEntity applicationStatus;
 
     @Column(name="applyAt")
     private Date applyAt;
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name="idJob")
     private JobEntity job;
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name="idCv")
     private CvEntity cv;
 

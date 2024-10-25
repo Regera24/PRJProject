@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class CvDTO {
     private String title;
     private String img;
     private String skills;
+    private Date createAt;
+    private Date updateAt;
     private List<ApplyJobDTO> applyJobDTOList = new ArrayList<>();
 
     public List<ApplyJobDTO> getApplyJobDTOList() {
@@ -58,6 +61,22 @@ public class CvDTO {
 
     public String getLinkProject() {
         return linkProject;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
     public void setLinkProject(String linkProject) {

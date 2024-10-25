@@ -16,11 +16,14 @@ public class CvDTOConverter {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private ApplyJobConverter applyJobConverter;
+
     public CvDTO toCvDTO(CvEntity cvEntity) {
         CvDTO cvDTO = modelMapper.map(cvEntity, CvDTO.class);
         List<ApplyJobDTO> applyJobDTOList = new ArrayList<>();
         for(applyJobEntity aj : cvEntity.getApplyJobEntities()){
-            ApplyJobDTO applyJobDTO = modelMapper.map(aj, ApplyJobDTO.class);
+            ApplyJobDTO applyJobDTO = applyJobConverter.toApplyJobDTO(aj);
             applyJobDTOList.add(applyJobDTO);
         }
         cvDTO.setApplyJobDTOList(applyJobDTOList);

@@ -12,6 +12,9 @@ public class ReviewDTOConverter {
     private ModelMapper modelMapper;
 
     public ReviewDTO toReviewDTO(ReviewEntity reviewEntity) {
-        return modelMapper.map(reviewEntity, ReviewDTO.class);
+        ReviewDTO reviewDTO = modelMapper.map(reviewEntity, ReviewDTO.class);
+        reviewDTO.setAuthor(reviewEntity.getCandidate().getName());
+        reviewDTO.setImg(reviewEntity.getCandidate().getAvartar());
+        return reviewDTO;
     }
 }

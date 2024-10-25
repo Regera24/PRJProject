@@ -15,7 +15,7 @@ public class RoleEntity {
     @Column(name="Code")
     private String code;
 
-    @OneToMany(mappedBy = "role", fetch= FetchType.LAZY)
+    @OneToMany(mappedBy = "role", fetch= FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<AccountEntity> accounts = new ArrayList<>();
 
     public String getCode() {

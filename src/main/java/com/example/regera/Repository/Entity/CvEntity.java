@@ -2,6 +2,7 @@ package com.example.regera.Repository.Entity;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,12 @@ public class CvEntity {
     @Column(name="linkProject")
     private String linkProject;
 
+    @Column(name="createAt")
+    private Date createAt;
+
+    @Column(name="updateAt")
+    private Date updateAt;
+
     @Column(name="title")
     private String title;
 
@@ -44,6 +51,22 @@ public class CvEntity {
 
     @Column(name="skills")
     private String skills;
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
 
     public String getSkills() {
         return skills;
@@ -61,11 +84,11 @@ public class CvEntity {
         this.applyJobEntities = applyJobEntities;
     }
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="idCandidate")
     private CandidateEntity candidate;
 
-    @OneToMany(mappedBy = "cv", fetch =  FetchType.LAZY)
+    @OneToMany(mappedBy = "cv", fetch =  FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     private List<applyJobEntity> applyJobEntities = new ArrayList<>();
 
     public Integer getId() {

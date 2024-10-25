@@ -7,6 +7,24 @@ public class ReviewDTO {
     private Date creatAt;
     private int rating;
     private String comment;
+    private String author;
+    private String img;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public Date getCreatAt() {
         return creatAt;

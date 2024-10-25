@@ -1,4 +1,4 @@
-package com.example.regera.API;
+package com.example.regera.API.Public;
 
 import com.example.regera.Model.CityDTO;
 import com.example.regera.Service.CityService;

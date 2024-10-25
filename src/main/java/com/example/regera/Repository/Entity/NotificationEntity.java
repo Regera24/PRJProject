@@ -21,11 +21,11 @@ public class NotificationEntity {
     @Column(name="role")
     private String role;
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name="idCompany")
     private CompanyEntity company;
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name="idCandidate")
     private CandidateEntity candidate;
 

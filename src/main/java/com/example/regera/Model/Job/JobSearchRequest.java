@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JobSearchRequest {
-    private String title;
     private String description;
     private Date createAt;
     private Float fromSalary;
     private Float toSalary;
+    private String jobType;
+    private String keywords;
+    private String company;
     private List<Integer> cityReq = new ArrayList<>();
     private List<Integer> jobReq = new ArrayList<>();
     private Integer status;
@@ -22,13 +24,6 @@ public class JobSearchRequest {
         this.status = status;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public List<Integer> getCityReq() {
         return cityReq;
@@ -44,6 +39,30 @@ public class JobSearchRequest {
 
     public void setJobReq(List<Integer> jobReq) {
         this.jobReq = jobReq;
+    }
+
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public Float getToSalary() {

@@ -3,6 +3,8 @@ package com.example.regera.Service.Impl;
 import com.example.regera.Converter.JobDTOConverter;
 import com.example.regera.Model.Job.JobDTO;
 import com.example.regera.Model.Job.JobSearchRequest;
+import com.example.regera.Repository.CandidateRepository;
+import com.example.regera.Repository.CompanyRepository;
 import com.example.regera.Repository.Entity.CompanyEntity;
 import com.example.regera.Repository.Entity.JobEntity;
 import com.example.regera.Repository.JobRepository;
@@ -22,6 +24,21 @@ public class JobServiceImpl implements JobService {
 
     @Autowired
     private JobDTOConverter jobDTOConverter;
+
+    @Autowired
+    private CandidateRepository candidateRepository;
+
+
+    @Override
+    public List<JobDTO> getAllJobs() {
+        List<JobEntity> list = jobRepository.findAll();
+        List<JobDTO> jobDTOList = new ArrayList<>();
+        for (JobEntity jobEntity : list) {
+            JobDTO j = jobDTOConverter.toJobDTO(jobEntity);
+            jobDTOList.add(j);
+        }
+        return jobDTOList;
+    }
 
     @Override
     public List<JobDTO> getJobByRequest(JobSearchRequest jobSearchRequest) {
@@ -59,5 +76,34 @@ public class JobServiceImpl implements JobService {
     @Override
     public void deleteJobs(Integer[] ids) {
         jobRepository.deleteByIdIn(ids);
+    }
+
+    @Override
+    public List<JobDTO> getJobByCompnayId(Integer compnayId) {
+        List<JobEntity> list = jobRepository.findByCompanyId(compnayId);
+        List<JobDTO> jobDTOList = new ArrayList<>();
+        for (JobEntity jobEntity : list) {
+            JobDTO j = jobDTOConverter.toJobDTO(jobEntity);
+            jobDTOList.add(j);
+        }
+        return jobDTOList;
+    }
+
+    @Override
+    public List<JobDTO> getJobByCandidateId(Integer candidateId) {
+        List<JobDTO> jobDTOList = new ArrayList<>();
+        List<JobEntity> list = jobRepository.getJobByCandidateId(candidateId);
+        for (JobEntity jobEntity : list) {
+            JobDTO j = jobDTOConverter.toJobDTO(jobEntity);
+            jobDTOList.add(j);
+        }
+        return jobDTOList;
+    }
+
+    @Override
+    public JobDTO getJobById(Integer id) {
+        JobEntity jobEntity = jobRepository.findById(id).get();
+        JobDTO j = jobDTOConverter.toJobDTO(jobEntity);
+        return j;
     }
 }

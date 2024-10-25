@@ -1,4 +1,4 @@
-package com.example.regera.API;
+package com.example.regera.API.Candidate;
 
 import com.example.regera.Model.CV.CvDTO;
 import com.example.regera.Service.CvService;
@@ -17,4 +17,5 @@ public class CvAPI {
     public List<CvDTO> getAllCv(){
         return cvService.getAllCv();
     }
+
 }

@@ -3,7 +3,9 @@ package com.example.regera.Service.Impl;
 import com.example.regera.Converter.CompanyDTOConverter;
 import com.example.regera.Model.Company.CompanyDTO;
 import com.example.regera.Model.Company.CompanySearchRequest;
+import com.example.regera.Repository.AccountRepository;
 import com.example.regera.Repository.CompanyRepository;
+import com.example.regera.Repository.Entity.AccountEntity;
 import com.example.regera.Repository.Entity.CompanyEntity;
 import com.example.regera.Service.CompanyService;
 import jakarta.persistence.EntityManager;
@@ -24,6 +26,9 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
     private CompanyDTOConverter companyDTOConverter;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -79,5 +84,17 @@ public class CompanyServiceImpl implements CompanyService {
     public CompanyDTO getCompanyById(Integer id) {
         CompanyDTO d = companyDTOConverter.toCompanyDTO(companyRepository.findById(id).get());
         return d;
+    }
+
+    @Override
+    public CompanyEntity getCompanyEntityByEmail(String email) {
+        return companyRepository.findByEmail(email);
+    }
+
+    @Override
+    public CompanyDTO getCompanyByAccount(String username) {
+        AccountEntity acc = accountRepository.findByUsername(username).get();
+        CompanyEntity company = companyRepository.findByAccount(acc);
+        return companyDTOConverter.toCompanyDTO(company);
     }
 }

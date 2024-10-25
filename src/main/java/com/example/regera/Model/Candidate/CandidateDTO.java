@@ -1,5 +1,6 @@
 package com.example.regera.Model.Candidate;
 
+import com.example.regera.Model.CV.CvDTO;
 import com.example.regera.Model.NotificationDTO;
 import com.example.regera.Repository.Entity.AccountEntity;
 import com.example.regera.Repository.Entity.CvEntity;
@@ -47,6 +48,16 @@ public class CandidateDTO {
 
     public List<NotificationDTO> getNotifications() {
         return notifications;
+    }
+
+    private List<CvDTO> cvs = new ArrayList<>();
+
+    public List<CvDTO> getCvs() {
+        return cvs;
+    }
+
+    public void setCvs(List<CvDTO> cvs) {
+        this.cvs = cvs;
     }
 
     public void setNotifications(List<NotificationDTO> notifications) {

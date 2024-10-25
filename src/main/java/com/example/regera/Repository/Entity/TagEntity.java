@@ -16,7 +16,7 @@ public class TagEntity {
     @Column(name="value")
     private String value;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name="includeTag",
             joinColumns = @JoinColumn(name="idTag"),
             inverseJoinColumns = @JoinColumn(name="idJob"))

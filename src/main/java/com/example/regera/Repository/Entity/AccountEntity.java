@@ -16,15 +16,15 @@ public class AccountEntity {
     @Column(name="password")
     private String password;
 
-    @ManyToOne()
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name="idRole")
     private RoleEntity role;
 
-    @OneToOne()
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "companyId")
     private CompanyEntity company;
 
-    @OneToOne()
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "candidateId")
     private CandidateEntity candidate;
 
